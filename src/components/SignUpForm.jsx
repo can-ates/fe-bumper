@@ -213,7 +213,7 @@ const SignUpForm = () => {
           <Image src="/repair-tool.svg" width={24} height={14} />
           <span>What services are you interested in?</span>
           <p className="font-extralight text-sm leading-4 mb-2">
-            Please select the services you're interested in offering your
+            Please select the services you&apos;re interested in offering your
             customers.
           </p>
         </label>

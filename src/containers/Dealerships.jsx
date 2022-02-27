@@ -47,8 +47,8 @@ const Dealerships = () => {
       </div>
       <div className="space-y-5 overflow-auto max-h-96 px-2">
         {dealerships.map(
-          ({ company, name, mobile_phone, postcode, email_address }) => (
-            <Card className="grid grid-cols-1 divide-y">
+          ({ company, name, mobile_phone: mobilePhone, postcode, email_address: emailAddress }) => (
+            <Card className="grid grid-cols-1 divide-y" key={mobilePhone}>
               <p className="pb-4 text-lg font-semibold">{name}</p>
               <div className="py-2 flex justify-between">
                 <span>Company</span>
@@ -56,11 +56,11 @@ const Dealerships = () => {
               </div>
               <div className="py-2 flex justify-between">
                 <span>Phone Number</span>
-                <span>{mobile_phone}</span>
+                <span>{mobilePhone}</span>
               </div>
               <div className="py-2 flex justify-between">
                 <span>Email address</span>
-                <span>{email_address}</span>
+                <span>{emailAddress}</span>
               </div>
               <div className="py-2 flex justify-between">
                 <span>Postcode</span>
