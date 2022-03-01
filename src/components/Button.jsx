@@ -12,13 +12,13 @@ const Button = ({
   return (
     <div
       disabled={disabled}
-      className={`border border-black inline-block ${className}`}
+      className={`inline-block border border-black ${className}`}
       role="button"
       onClick={onClick}
       {...remainingProps}
     >
       {children && <span>{children}</span>}
-      {icon && icon}
+      {icon}
     </div>
   );
 };

@@ -6,18 +6,28 @@ const Input = ({
   label,
   inputType,
   inputClassName,
+  error,
+  value,
+  icon,
   ...remainingProps
 }) => {
   return (
-    <>
-      <label className="text-gray-600 font-medium block mt-4">{label}</label>
+    <div className="relative">
+      <label className="mt-4 block font-medium text-gray-600">{label}</label>
       <input
-        className={`rounded-3xl border-solid border-gray-300 border py-2 px-4 w-full text-gray-700 ${inputClassName}`}
+        className={`w-full rounded-3xl border border-solid ${
+          error
+            ? 'border-red-300'
+            : value && !error
+            ? 'border-green-300'
+            : 'border-gray-300'
+        } py-2 px-4 text-gray-700 ${inputClassName}`}
         name={name}
         type={inputType}
         {...remainingProps}
       />
-    </>
+      {icon}
+    </div>
   );
 };
 
@@ -29,6 +39,9 @@ Input.propTypes = {
   tabIndex: number,
   disabled: bool,
   inputClassName: string,
+  error: bool,
+  value: string,
+  icon: renderable,
 };
 
 Input.defaultProps = {
@@ -38,6 +51,9 @@ Input.defaultProps = {
   inputType: '',
   disabled: false,
   inputClassName: '',
+  error: false,
+  value: '',
+  icon: null,
 };
 
 export default Input;

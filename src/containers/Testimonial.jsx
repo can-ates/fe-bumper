@@ -3,11 +3,11 @@ import Card from '../components/Card';
 
 const Testimonal = () => {
   return (
-    <section className="py-20 px-8 relative max-h-min">
+    <section className="relative max-h-min py-20 px-14">
       <div
         className={`${styles['background-container']} ${styles['testimonial-background']}`}
       />
-      <Card className="sm:ml-auto max-w-sm">
+      <Card className="max-w-sm sm:ml-auto">
         <div>
           <span className="font-semibold">
             "Est sem nisl morbi praesent tempor augue in venenatis dolor massa
@@ -20,12 +20,12 @@ const Testimonal = () => {
             pharetra. Suspendisse ultrices porta."
           </p>
         </div>
-        <div className="flex items-center mt-4">
+        <div className="mt-4 flex items-center">
           <div className="flex flex-col border-r-2 border-black pr-4">
             <span>Eddie Hawtborne</span>
             <span>Managing Director</span>
           </div>
-          <span className="font-mono pl-4 font-bold">Arnold Clark</span>
+          <span className="pl-4 font-mono font-bold">Arnold Clark</span>
         </div>
       </Card>
     </section>

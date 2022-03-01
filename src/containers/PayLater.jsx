@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '../components/Button';
+import RightArrow from '../../public/right-arrow.svg';
 
 const paylater = [
   {
@@ -22,35 +23,35 @@ const paylater = [
 
 const PayLater = () => {
   return (
-    <section className="pt-16 px-14 lg:flex">
+    <section className="px-14 pt-16 lg:flex">
       <div className="flex-1 space-y-6">
         <span className="font-semibold">PayLater</span>
         <p>
           Allow your customers to split their repair or service bill over
           monthly repayments.
         </p>
-        <p className="dark:text-amber-500 text-4xl font-semibold font-mono max-w-md">
+        <p className="max-w-md font-mono text-4xl font-semibold dark:text-orange-500">
           NO RISK FOR DEALERS, NO WORRY FOR DRIVERS
         </p>
         <p className="font-semibold">It's as simple as:</p>
-        <div className="relative pl-16 mb-10">
+        <div className="relative mb-10 pl-16">
           {paylater.map(({ title, subTitle }, i) => (
             <div key={title} className="relative space-y-6">
-              <div className="block absolute top-0 -left-14 border-2 border-black rounded-full w-8 h-8 text-center leading-7 z-20 bg-amber-500 ml-px">
+              <div className="absolute top-0 -left-14 z-20 ml-px block h-8 w-8 rounded-full border-2 border-black bg-orange-500 text-center leading-7">
                 {i + 1}
               </div>
               {paylater.length !== i + 1 && (
-                <div className="block absolute -left-10 top-2 w-0 border-2 border-black h-full -ml-px" />
+                <div className="absolute -left-10 top-2 -ml-px block h-full w-0 border-2 border-black" />
               )}
-              <p className="leading-8 text-xl font-semibold">{title}</p>
+              <p className="text-xl font-semibold leading-8">{title}</p>
               <p>{subTitle}</p>
             </div>
           ))}
         </div>
         <Link href="/signup">
           <Button
-            icon={<Image src="/right-arrow.svg" height={24} width={36} />}
-            className="flex items-center w-fit px-4 py-3 rounded-3xl space-x-2 bg-lime-600 hover:bg-lime-900 "
+            icon={<RightArrow height={20} width={24} />}
+            className="flex w-fit items-center space-x-2 rounded-3xl bg-green-600 px-4 py-3 hover:bg-green-500 hover:fill-white hover:text-white"
           >
             Register your interest
           </Button>

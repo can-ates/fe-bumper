@@ -23,15 +23,15 @@ const benefits = [
 
 const Statistics = () => {
   return (
-    <section className="space-y-8 py-16 px-8 bg-cyan-900 text-white mt-10">
-      <p className="font-semibold text-xl">
+    <section className="mt-10 space-y-8 bg-cyan-900 py-16 px-14 text-white">
+      <p className="text-3xl font-semibold">
         BENEFITS OUR OTHER PARTNERS HAVE NOTICED OFFERING PAY LATER
       </p>
-      <div className="md:flex md:space-x-10 space-y-5 md:space-y-0">
+      <div className="space-y-5 md:flex md:space-x-10 md:space-y-0">
         {benefits.map(({ percantage, title }) => (
           <div key={`${percantage}-${title}`}>
-            <div className="text-emerald-200 font-mono">
-              <span className="text-4xl">{percantage}</span>
+            <div className="font-mono text-green-600">
+              <span className="text-5xl">{percantage}</span>
               <span>%</span>
             </div>
             <p>{title}</p>
@@ -39,8 +39,8 @@ const Statistics = () => {
         ))}
       </div>
       <p className="font-extralight">
-        <span className="font-medium">Source: </span>Survey of 2,750 Bumper
-        customers in Feb 2021
+        <span className="font-medium">Source: </span>
+        Survey of 2,750 Bumper customers in Feb 2021
       </p>
     </section>
   );

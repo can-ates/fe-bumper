@@ -1,18 +1,23 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import RepairTool from '../../public/repair-tool.svg';
+import Garage from '../../public/garage.svg';
 
 const leftNavigations = ['Apply', 'How it works', 'About us', 'Blog'];
 
 const Navbar = () => {
   return (
-    <nav className="bg-white border-gray-200 py-2.5 md:rounded-3xl dark:bg-gray-800 md:my-4 px-6 fixed md:w-11/12 inset-x-0 mx-auto z-50">
-      <div className="flex flex-wrap justify-between items-center">
+    <nav className="fixed inset-x-0 z-50 mx-auto border-gray-200 bg-white py-2.5 px-6 dark:bg-orange-600 md:my-4 md:w-11/12 md:rounded-3xl">
+      <div className="flex flex-wrap items-center justify-between">
         <div className="hidden w-full md:block md:w-auto">
-          <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm mr-auto md:font-medium">
+          <ul className="mt-4 mr-auto flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">
             {leftNavigations.map((title) => (
               <li key={title}>
-                <a href="#" className="block py-2 pr-4 pl-3 text-white md:p-0">
+                <a
+                  href="#"
+                  className="block py-2 pr-4 pl-3 text-black hover:text-white md:p-0"
+                >
                   {title}
                 </a>
               </li>
@@ -25,24 +30,21 @@ const Navbar = () => {
           </a>
         </Link>
         <div className="hidden w-full md:block md:w-auto">
-          <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
-            <li>
+          <ul className="mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">
+            <li className="relative">
               <Link href="/signup">
-                <a className="block py-2 pr-4 pl-3 text-white md:p-0 flex items-center">
+                <a className="block flex items-center py-2 pr-4 pl-3 text-black hover:fill-white hover:text-white md:p-0">
                   <span className="mr-2">Partner sign up</span>
-                  <Image
-                    className="fill-blue-500"
-                    src="/repair-tool.svg"
-                    width={24}
-                    height={24}
-                  />
+                  <RepairTool height={20} width={24} />
+                  <div className="absolute top-0 mt-px h-10 w-full rounded border-b-4 border-black bg-transparent hover:border-white" />
                 </a>
               </Link>
             </li>
             <li>
               <Link href="/signup">
-                <a className="block py-2 pr-4 pl-3 text-white md:p-0">
-                  Partner login
+                <a className="block flex items-center py-2 pr-4 pl-3 text-black hover:fill-white hover:text-white md:p-0">
+                  <span className="mr-2">Partner login</span>
+                  <Garage height={20} width={24} />
                 </a>
               </Link>
             </li>
@@ -50,10 +52,10 @@ const Navbar = () => {
         </div>
         <button
           type="button"
-          className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          className="ml-3 inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
         >
           <svg
-            className="w-6 h-6"
+            className="h-6 w-6"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +67,7 @@ const Navbar = () => {
             ></path>
           </svg>
           <svg
-            className="hidden w-6 h-6"
+            className="hidden h-6 w-6"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"

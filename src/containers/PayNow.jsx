@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '../components/Button';
+import RightArrow from '../../public/right-arrow.svg';
 
 const paylater = [
   {
@@ -47,18 +48,18 @@ const paylater = [
 
 const PayNow = () => {
   return (
-    <section className="py-16 px-8 md:flex">
+    <section className="py-16 px-14 md:flex">
       <div className="flex-1 space-y-8">
         <span className="font-semibold">PayNow</span>
         <p>
           Our contactless payment solution that allows you to take payments
           online from your customers.
         </p>
-        <p className="dark:text-amber-500 text-4xl font-semibold font-mono">
+        <p className="font-mono text-4xl font-semibold dark:text-orange-500">
           ACCEPT PAYMENTS ANYWHERE, ANYTIME
         </p>
         <p className="font-semibold">Benefits of PayNow</p>
-        <div className="md:flex space-x-0 md:space-x-32 space-y-8 md:space-y-0">
+        <div className="space-x-0 space-y-8 md:flex md:space-x-32 md:space-y-0">
           {paylater.map(({ icon, title, subTitle }) => (
             <div key={title} className="flex space-x-8">
               <div className="payNow-image">{icon}</div>
@@ -71,8 +72,8 @@ const PayNow = () => {
         </div>
         <Link href="/signup">
           <Button
-            icon={<Image src="/right-arrow.svg" height={24} width={36} />}
-            className="flex items-center w-fit px-4 py-3 rounded-3xl space-x-2 bg-lime-600 hover:bg-lime-900"
+            icon={<RightArrow height={20} width={24} />}
+            className="flex w-fit items-center space-x-2 rounded-3xl bg-green-600 px-4 py-3 hover:bg-green-500 hover:fill-white hover:text-white"
           >
             Register your interest
           </Button>

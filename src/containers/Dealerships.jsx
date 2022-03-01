@@ -33,41 +33,56 @@ const Dealerships = () => {
   }, []);
 
   return (
-    <section className="space-y-5 w-full max-w-3xl flex flex-col justify-center my-36">
-      <h1 className="text-3xl text-white px-2">Interested Dealerships</h1>
+    <section className="my-36 flex w-full max-w-3xl flex-col justify-center space-y-5">
+      <h1 className="px-2 text-3xl text-white">Interested Dealerships</h1>
       <div className="px-2">
         <Card>
           <Input
             label="Search Company"
             inputType="text"
-            placeholder="Start typing name, company, phone or email for search"
+            placeholder="Start typing company name for search..."
             onChange={(e) => setSearchText(e.target.value)}
           />
         </Card>
       </div>
-      <div className="space-y-5 overflow-auto max-h-96 px-2">
-        {dealerships.map(
-          ({ company, name, mobile_phone: mobilePhone, postcode, email_address: emailAddress }) => (
-            <Card className="grid grid-cols-1 divide-y" key={mobilePhone}>
-              <p className="pb-4 text-lg font-semibold">{name}</p>
-              <div className="py-2 flex justify-between">
-                <span>Company</span>
-                <span>{company}</span>
-              </div>
-              <div className="py-2 flex justify-between">
-                <span>Phone Number</span>
-                <span>{mobilePhone}</span>
-              </div>
-              <div className="py-2 flex justify-between">
-                <span>Email address</span>
-                <span>{emailAddress}</span>
-              </div>
-              <div className="py-2 flex justify-between">
-                <span>Postcode</span>
-                <span>{postcode}</span>
-              </div>
-            </Card>
+      <div className="max-h-96 space-y-5 overflow-auto px-2">
+        {dealerships.length > 0 ? (
+          dealerships.map(
+            ({
+              company,
+              name,
+              mobile_phone: mobilePhone,
+              postcode,
+              email_address: emailAddress,
+            }) => (
+              <Card
+                className="grid grid-cols-1 divide-y"
+                key={`${mobilePhone}-${company}-${postcode}`}
+              >
+                <p className="pb-4 text-lg font-semibold">{name}</p>
+                <div className="flex justify-between py-2">
+                  <span>Company</span>
+                  <span>{company}</span>
+                </div>
+                <div className="flex justify-between py-2">
+                  <span>Phone Number</span>
+                  <span>{mobilePhone}</span>
+                </div>
+                <div className="flex justify-between py-2">
+                  <span>Email address</span>
+                  <span>{emailAddress}</span>
+                </div>
+                <div className="flex justify-between py-2">
+                  <span>Postcode</span>
+                  <span>{postcode}</span>
+                </div>
+              </Card>
+            )
           )
+        ) : (
+          <h1 className="text-center text-3xl leading-10 text-white">
+            No Company Found
+          </h1>
         )}
       </div>
     </section>
