@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import useDebounce from '../hooks/useDebounce';
 import Button from './Button';
 import * as Yup from 'yup';
 import Card from './Card';
@@ -22,6 +23,7 @@ const phoneRegex =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const bumperURL =
   'https://proto.bumper.co.uk/core/dealership/registration/sandbox';
+const postCodeURL = 'https://api.postcodes.io/postcodes/$postcode/autocomplete';
 
 const inputFields = [
   {
@@ -74,11 +76,13 @@ const formOptions = {
 const SignUpForm = () => {
   const [isPayNowChecked, setIsPayNowChecked] = useState(false);
   const [isPayLaterChecked, setIsPayLaterChecked] = useState(false);
+  const [postCodeSuggestionList, setPostCodeSuggestionList] = useState([]);
   const router = useRouter();
 
-  const { trigger, formState, handleSubmit, control, setValue } =
+  const { trigger, formState, handleSubmit, control, setValue, watch } =
     useForm(formOptions);
   const { errors, isDirty } = formState;
+  const postcode = watch('postcode');
 
   useEffect(() => {
     if (isDirty) {
@@ -87,13 +91,41 @@ const SignUpForm = () => {
     }
   }, [isPayLaterChecked, isPayNowChecked]);
 
+  useDebounce(
+    async () => {
+      const list = await fetch(postCodeURL.replace('$postcode', postcode), {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const { status, result } = await list.json();
+      if (status === 200 && result) {
+        if (result[0] !== postcode) {
+          setPostCodeSuggestionList(result);
+        }
+        return;
+      }
+
+      setPostCodeSuggestionList([]);
+    },
+    300,
+    [postcode]
+  );
+
+  const setPostcode = (suggestion) => {
+    setValue('postcode', suggestion);
+    trigger('postcode');
+    setPostCodeSuggestionList([]);
+  };
+
   const onSubmit = async ({ company, email, name, phone, postcode }) => {
     const body = {
       name,
       company,
       mobile_phone: phone,
       email_address: email,
-      postcode,
+      postcode: postcode.replace(' ', ''),
       pay_later: String(isPayLaterChecked),
       pay_now: String(isPayNowChecked),
     };
@@ -137,6 +169,25 @@ const SignUpForm = () => {
                       <span className="flex items-center">
                         {icon}
                         <span>{text}</span>
+                        {name === 'postcode' &&
+                          field.value &&
+                          postCodeSuggestionList.length > 0 && (
+                            <div className="absolute top-20 w-full rounded-lg border border-black bg-white shadow-lg lg:w-1/3">
+                              <ul>
+                                {postCodeSuggestionList.map((suggestion) => {
+                                  return (
+                                    <li
+                                      key={suggestion}
+                                      onClick={() => setPostcode(suggestion)}
+                                      className="p-3 hover:bg-blue-600 hover:text-blue-200"
+                                    >
+                                      {suggestion}
+                                    </li>
+                                  );
+                                })}
+                              </ul>
+                            </div>
+                          )}
                       </span>
                     }
                     name="name"

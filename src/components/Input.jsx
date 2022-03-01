@@ -24,6 +24,7 @@ const Input = ({
         } py-2 px-4 text-gray-700 ${inputClassName}`}
         name={name}
         type={inputType}
+        value={value}
         {...remainingProps}
       />
       {icon}
