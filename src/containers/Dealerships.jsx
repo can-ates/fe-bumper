@@ -42,6 +42,7 @@ const Dealerships = () => {
             inputType="text"
             placeholder="Start typing company name for search..."
             onChange={(e) => setSearchText(e.target.value)}
+            value={searchText}
           />
         </Card>
       </div>
