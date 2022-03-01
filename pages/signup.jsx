@@ -5,7 +5,7 @@ import RightArrow from '../public/right-arrow.svg';
 const SignUp = () => {
   return (
     <main className="flex h-screen flex-col items-center justify-center overflow-auto bg-sky-800">
-      <div className="mt-72 mb-12 flex w-full max-w-3xl flex-col justify-center px-4 sm:mt-56 md:p-0">
+      <div className="mt-96 mb-12 flex w-full max-w-3xl flex-col justify-center px-4 md:p-0">
         <div>
           <Link href="/">
             <RightArrow
