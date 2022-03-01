@@ -43,6 +43,7 @@ const Dealerships = () => {
             placeholder="Start typing company name for search..."
             onChange={(e) => setSearchText(e.target.value)}
             value={searchText}
+            error={searchText && dealerships.length === 0}
           />
         </Card>
       </div>
