@@ -8,7 +8,7 @@ const leftNavigations = ['Apply', 'How it works', 'About us', 'Blog'];
 
 const Navbar = () => {
   return (
-    <nav className="fixed inset-x-0 z-50 mx-auto border-gray-200 bg-white py-2.5 px-6 dark:bg-orange-600 md:my-4 md:w-11/12 md:rounded-3xl">
+    <nav className="fixed inset-x-0 z-50 mx-auto border-gray-200 bg-orange-600 py-2.5 px-6 md:my-4 md:w-11/12 md:rounded-3xl">
       <div className="flex flex-wrap items-center justify-between">
         <div className="hidden w-full md:block md:w-auto">
           <ul className="mt-4 mr-auto flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">

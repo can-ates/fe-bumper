@@ -30,7 +30,7 @@ const PayLater = () => {
           Allow your customers to split their repair or service bill over
           monthly repayments.
         </p>
-        <p className="max-w-md font-mono text-4xl font-semibold dark:text-orange-500">
+        <p className="max-w-md font-mono text-4xl font-semibold text-orange-500">
           NO RISK FOR DEALERS, NO WORRY FOR DRIVERS
         </p>
         <p className="font-semibold">It's as simple as:</p>

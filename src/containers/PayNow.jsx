@@ -55,7 +55,7 @@ const PayNow = () => {
           Our contactless payment solution that allows you to take payments
           online from your customers.
         </p>
-        <p className="font-mono text-4xl font-semibold dark:text-orange-500">
+        <p className="font-mono text-4xl font-semibold text-orange-500">
           ACCEPT PAYMENTS ANYWHERE, ANYTIME
         </p>
         <p className="font-semibold">Benefits of PayNow</p>

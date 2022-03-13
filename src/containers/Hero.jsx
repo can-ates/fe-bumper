@@ -17,7 +17,7 @@ const Hero = () => {
       <div
         className={`${styles['background-container']} ${styles['hero-background']}`}
       />
-      <div className="my-10 text-white">
+      <div className="my-10 text-black">
         <p className="my-7 flex items-center text-lg">
           <span className="mr-4">Excellent</span>
           <Image src="/stars-5-1.svg" height={24} width={120} />
